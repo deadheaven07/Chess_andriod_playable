@@ -15,15 +15,16 @@ import com.harsh.chess_application.domain.model.PlayerColor
 @Composable
 fun ChessPieceView(piece: Piece) {
     val symbol = when (piece.type) {
-        PieceType.PAWN -> "♙"
-        PieceType.KNIGHT -> "♘"
-        PieceType.BISHOP -> "♗"
-        PieceType.ROOK -> "♖"
-        PieceType.QUEEN -> "♕"
-        PieceType.KING -> "♔"
+        PieceType.PAWN -> "♟"
+        PieceType.KNIGHT -> "♞"
+        PieceType.BISHOP -> "♝"
+        PieceType.ROOK -> "♜"
+        PieceType.QUEEN -> "♛"
+        PieceType.KING -> "♚"
     }
     
     val color = if (piece.color == PlayerColor.WHITE) Color.White else Color.Black
+    val shadowColor = if (piece.color == PlayerColor.WHITE) Color.Black.copy(alpha = 0.5f) else Color.White.copy(alpha = 0.3f)
     
     Box(
         modifier = Modifier.fillMaxSize(),
@@ -31,8 +32,14 @@ fun ChessPieceView(piece: Piece) {
     ) {
         Text(
             text = symbol,
-            fontSize = 40.sp,
-            color = color
+            fontSize = 44.sp,
+            color = color,
+            style = androidx.compose.ui.text.TextStyle(
+                shadow = androidx.compose.ui.graphics.Shadow(
+                    color = shadowColor,
+                    blurRadius = 4f
+                )
+            )
         )
     }
 }
