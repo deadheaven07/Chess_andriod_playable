@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
+import com.harsh.chess_application.domain.usecase.MoveValidator
 import com.harsh.chess_application.presentation.chess.screen.ChessGameScreen
 import com.harsh.chess_application.presentation.chess.viewmodel.ChessViewModel
 import com.harsh.chess_application.ui.theme.Chess_ApplicationTheme
@@ -25,8 +26,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     // Using manual instantiation as a fallback for sync issues
-                    // In a working Hilt setup, use hiltViewModel()
-                    ChessGameScreen(viewModel = ChessViewModel())
+                    ChessGameScreen(viewModel = ChessViewModel(MoveValidator()))
                 }
             }
         }

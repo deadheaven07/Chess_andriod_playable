@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ChessViewModel @Inject constructor(
-    private val moveValidator: MoveValidator = MoveValidator()
+    private val moveValidator: MoveValidator
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(ChessState())
